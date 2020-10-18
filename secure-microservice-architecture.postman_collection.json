@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "c55a620f-b39a-48be-8d1e-27bfdd50993e",
+		"name": "secure-microservice-architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "item-service",
+			"item": [
+				{
+					"name": "find by item id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/item-api/item/find/by-id?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"find",
+								"by-id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find item list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/item-api/item/find",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"shart\",\n    \"productSize\": \"M\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8180/item-api/item/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/item-api/item/delete/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"item-api",
+								"item",
+								"delete",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "sales-service",
+			"item": [
+				{
+					"name": "Find Sales List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/find",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sales add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"shart\",\n    \"price\": \"150\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by sales id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/find/by-id?id=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"find",
+								"by-id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Sales",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7a29b145-1c62-49b5-9d37-2e9e9a8a7089",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/delete/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "auth-token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mobile",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9191/auth-api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"auth-api",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
