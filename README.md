@@ -267,7 +267,7 @@ On this repository we will see `secure-microservice-architecture.postman_collect
 # API Gateway Service
 
 Gateway Server is an application that transmit all API to desire services. every resource services information such us: `service-name, context-path` will beconfigured into the gateway service and every request will transmit configured services by gateway
-```
+
 
 ## How to run API Gateway Service?
 
