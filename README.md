@@ -49,7 +49,7 @@ Run on terminal `java –jar <JARFILE> `
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 ##
-# micro-auth-service
+# Authorization Service
 
 Whenever we think of microservices and distributed applications, the first point that comes to mind is security. Obviously, in distributed architectures, it is really difficult to manage security as we do not have much control over the application. So in this situation, we always need to have a central entry point to this distributed architecture. This is the reason why, in microservices, we have a separate and dedicated layer for all these purposes. This layer is known as the API Gateway. It is an entry point for a microservice's architecture.
 
@@ -91,6 +91,12 @@ First, we need to add the `spring-cloud-starter-oauth2` dependency:
 </dependency>
 ```
 This will also bring in the `spring-cloud-starter-security`dependency.
+```
+<dependency>
+     <groupId>org.springframework.cloud</groupId>
+     <artifactId>spring-cloud-starter-security</artifactId>
+</dependency>
+```
 
 **Create tables for users, groups, group authorities and group members**
 
@@ -325,7 +331,7 @@ Now, add the Request Parameters as follows −
 
 * `grant_type` = password
 * `username` = your username
-*` password` = your password
+* ` password` = your password
 ![2](https://user-images.githubusercontent.com/31319842/95816163-3bf65700-0d40-11eb-9c87-7b721e0a268f.png)
 
 **HTTP POST Response**
