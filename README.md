@@ -346,7 +346,7 @@ Now, add the Request Parameters as follows −
 ```
 
 ##
-# Item Service
+# Item Service (Resource service)
 
 Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
@@ -451,10 +451,8 @@ curl --request GET 'localhost:8180/item-api/item/find' --header 'Authorization: 
 On this repository we will see `secure-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
 
-
-
 ##
-# Sales Service
+# Sales Service (Resource service)
 Now we will see `micro-sales-service` as a resource service. The `micro-sales-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `SalesApplicationRunner` bean.
 
 Add the following dependencies:
