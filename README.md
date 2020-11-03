@@ -10,7 +10,6 @@ The architecture is composed by five services:
    * `micro-auth-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **authorization service**
    * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
-   
 
 ### tools you will need
 * Maven 3.0+ is your build tool
@@ -18,12 +17,10 @@ The architecture is composed by five services:
 * MySQL server
 * JDK 1.8+
 
-
 ##
 # Eureka Service
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
-
 
 ## How to run eureka service?
 
