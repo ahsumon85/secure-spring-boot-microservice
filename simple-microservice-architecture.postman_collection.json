@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "8c4e7f1c-93dd-4f12-aa1b-bc3f4ebcd4fa",
+		"name": "simple-microservice-architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "product-service",
+			"item": [
+				{
+					"name": "Find Product List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/product-api/product/find",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"product-api",
+								"product",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find by product id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/product-api/product/find/by-id?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"product-api",
+								"product",
+								"find",
+								"by-id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find product list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/product-api/product/find",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"product-api",
+								"product",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"shart\",\n    \"productSize\": \"M\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8180/product-api/product/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"product-api",
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/product-api/product/delete/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"product-api",
+								"product",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "sales-service",
+			"item": [],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
