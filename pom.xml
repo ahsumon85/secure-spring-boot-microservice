@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>micro-api-gateway</module>
+        <module>micro-api-getway</module>
         <module>micro-eureka-server</module>
         <module>micro-product-service</module>
         <module>micro-sales-service</module>
