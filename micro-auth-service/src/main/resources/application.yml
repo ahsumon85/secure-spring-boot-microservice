@@ -1,0 +1,53 @@
+server:
+  port: 9191
+  servlet:
+    context-path: /auth-api
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth?createDatabaseIfNotExist=true
+    username: root
+    password: 12345678
+    
+#    url: jdbc:mysql://mysqldb:3306/auth?createDatabaseIfNotExist=true
+#    username: root
+#    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    generate-ddl: true
+  application:
+    name: auth-server
+
+logging:
+  level:
+    root: WARN
+    org.springframework.web: DEBUG
+    org.hibernate: ERROR
+    org.springframework: INFO
+    
+  file: /app/log/auth.log
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://eureka:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: -*
+        exclude: env,beans
+    
