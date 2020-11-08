@@ -1,4 +1,4 @@
-## Spring Boot, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL.
+## Spring Boot, Spring Cloud Oauth2, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL.
 
 
 
