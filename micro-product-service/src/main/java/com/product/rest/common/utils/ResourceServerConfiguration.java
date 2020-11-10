@@ -26,7 +26,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         http.csrf().disable()
                 .sessionManagement().disable()
                 .authorizeRequests()
-//                .antMatchers("/medicine/category/list").permitAll()
+//                .antMatchers("/product/list").permitAll()
                 .and()
                 .requestMatchers()                
                 .antMatchers(SECURED_PATTERN).and().authorizeRequests()
