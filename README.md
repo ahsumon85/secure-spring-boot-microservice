@@ -6,9 +6,11 @@
 The architecture is composed by five services:
 
    * `micro-eureka-server`: Service **Discovery Server** created with Eureka
+   * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
+   * `micro-auth-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **authorization service**
    * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
-   * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
+   
 
 ### tools you will need
 * Maven 3.0+ is your build tool
