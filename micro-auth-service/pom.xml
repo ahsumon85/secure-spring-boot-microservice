@@ -9,9 +9,10 @@
 		<version>2.1.3.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ati</groupId>
-	<artifactId>micro-auth-server</artifactId>
+	<groupId>com.ahasan</groupId>
+	<artifactId>micro-auth-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<name>authorization-server</name>
 	<description>Demo project for Spring Boot</description>
 

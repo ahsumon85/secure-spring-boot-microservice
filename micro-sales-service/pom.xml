@@ -5,13 +5,13 @@
 	xmlns:beans="http://www.springframework.org/schema/beans">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ati</groupId>
+	<groupId>com.ahasan</groupId>
 	<artifactId>micro-sales-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>microser-sales-service</name>
-	<description>user service demo project</description>
+	<description>imtem service demo project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
