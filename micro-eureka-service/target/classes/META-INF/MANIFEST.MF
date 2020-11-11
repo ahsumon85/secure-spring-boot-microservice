@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: microservice-eureka-server
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ahasan
+Implementation-Vendor-Id: com.eureka.server
+Build-Jdk: 1.8.0_272
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/micro-eureka-service
+Created-By: Maven Integration for Eclipse
+

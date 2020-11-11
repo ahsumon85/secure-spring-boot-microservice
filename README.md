@@ -57,39 +57,6 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 Now we will see `micro-product-service` as a resource service. The `micro-product-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of products when the application loads using an `ProductApplicationRunner` bean.
 
-Add the following dependencies:
-
-* **Web:** Spring MVC and embedded Tomcat
-* **Actuator:** features to help you monitor and manage your application
-* **EurekaClient:** for service registration
-* **JPA:** to save/retrieve data
-* **MySQL:** to use store data on database
-* **RestRepositories:** to expose JPA repositories as REST endpoints
-* **hibernate validator:** to use runtime exception handling and return error messages
-
-***Configure Application Name, Database Information and a few other configuration in properties file***
-```
-server.port=8280
-spring.application.name=product-server
-server.servlet.context-path=/product-api
-
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/product_service?useSSL=false&createDatabaseIfNotExist=true
-spring.datasource.username=[username]
-spring.datasource.password=[password]
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
-spring.jpa.generate-ddl=true
-spring.jpa.show-sql=true
-
-#eureka server url
-eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
-eureka.client.register-with-eureka=true
-eureka.client.fetch-registry=true
-eureka.instance.preferIpAddress=true
-eureka.instance.lease-expiration-duration-in-seconds=1
-eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
 ***Enable Eureka Registry Service on product service***
