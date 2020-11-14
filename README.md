@@ -83,9 +83,9 @@ After sucessfully run we can refresh Eureka Discovery-Service URL: `http://local
 
 ### Test HTTP GET Request on resource service
 ```
-curl --request GET http://localhost:8180/product-api/product/find
+curl --request GET http://localhost:8180/item-api/item/find
 ```
-here `[http://localhost:8180/product-api/product/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `product-api` are context path of prodcut service  and `/product/find` is method URL.
+here `[http://localhost:8180/item-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of prodcut service  and `/item/find` is method URL.
 
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
