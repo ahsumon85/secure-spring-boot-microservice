@@ -59,10 +59,7 @@ Now we will see `micro-item-service` as a resource service. The `micro-item-serv
 
 ```
 
-***Enable Eureka Registry Service on product service***
-Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
-
-## How to run product service?
+## How to run item service?
 
 ### Build Project
 Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
@@ -82,7 +79,7 @@ Now, run the JAR file by using the following command −
  
 Eureka Discovery-Service URL: `http://localhost:8761`
 
-After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `product-server` instance gate will be run on `http://localhost:8280` port
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `item-server` instance gate will be run on `http://localhost:8280` port
 
 ### Test HTTP GET Request on resource service
 ```
