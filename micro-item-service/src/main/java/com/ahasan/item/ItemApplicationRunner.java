@@ -9,10 +9,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @SpringBootApplication
 @EnableEurekaClient
-public class ProductApplicationRunner {
+public class ItemApplicationRunner {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductApplicationRunner.class, args);
+		SpringApplication.run(ItemApplicationRunner.class, args);
 		System.out.println("Product service ruuning....!");
 	}
 
