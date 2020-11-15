@@ -57,6 +57,17 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
+Add the following dependencies:
+
+* **Web:** Spring MVC and embedded Tomcat
+* **Actuator:** features to help you monitor and manage your application
+* **EurekaClient:** for service registration
+* **JPA:** to save/retrieve data
+* **MySQL:** to use store data on database
+* **RestRepositories:** to expose JPA repositories as REST endpoints
+* **Hibernate validator:** to use runtime exception handling and return error messages
+* **oauth2:** to use api security of endpoint and access auth permission
+
 
 ## How to run item service?
 
@@ -84,10 +95,10 @@ After sucessfully run we can refresh Eureka Discovery-Service URL: `http://local
 ```
 curl --request GET http://localhost:8180/item-api/item/find
 ```
-here `[http://localhost:8180/item-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of prodcut service  and `/item/find` is method URL.
+here `[http://localhost:8180/item-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of item service  and `/item/find` is method URL.
 
 ### For getting All API Information
-On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
+On this repository we will see `secure-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
 
 ##
@@ -104,6 +115,7 @@ Add the following dependencies:
 * **MySQL:** to use store data on database
 * **RestRepositories:** to expose JPA repositories as REST endpoints
 * **hibernate validator:** to use runtime exception handling and return error messages
+* **oauth2:** to use api security of endpoint and access auth permission
 
 ***Configure Application info, Database info and a few other configuration in properties file***
 ```
