@@ -57,7 +57,6 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
-```
 
 ## How to run item service?
 
