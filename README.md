@@ -101,6 +101,18 @@ security.oauth2.client.client-id=mobile
 security.oauth2.client.client-secret=pin
 ```
 
+* ***Enable oauth2 on sales service as a resource service***
+Now add the `@SpringBootApplication` and `@EnableResourceServer` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service.
+
+### Test HTTP GET Request on resource service
+```
+curl --request GET http://localhost:8180/sales-api/sales/find
+```
+here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `sales-api` are application context path of sales service and `/sales/find` is method URL.
+
+### For getting All API Information
+On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
+
 ## How to run item service?
 
 ### Build Project
@@ -159,8 +171,8 @@ server.servlet.context-path=/sales-api
 #MySQL Database Configuration
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/sales_service?useSSL=false&createDatabaseIfNotExist=true
-spring.datasource.username=admin
-spring.datasource.password=Ati@2020
+spring.datasource.username=[username]
+spring.datasource.password=[password]
 
 #Hibernet JPA Configuration
 spring.jpa.hibernate.ddl-auto=update
@@ -182,7 +194,7 @@ security.oauth2.client.client-id=mobile
 security.oauth2.client.client-secret=pin
 ```
 
-***Enable Eureka Registry Service on product service***
+* ***Enable Eureka Registry Service on sales service***
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
