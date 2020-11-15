@@ -66,7 +66,7 @@ Add the following dependencies:
 * **MySQL:** to use store data on database
 * **RestRepositories:** to expose JPA repositories as REST endpoints
 * **Hibernate validator:** to use runtime exception handling and return error messages
-* **oauth2:** to use api security of endpoint and access auth permission
+* **oauth2:** to use api endpoint security and access auth permission
 
 ***Configure Application info, Database info and a few other configuration in properties file***
 ```
@@ -78,8 +78,8 @@ server.servlet.context-path=/sales-api
 #MySQL Database Configuration
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/sales_service?useSSL=false&createDatabaseIfNotExist=true
-spring.datasource.username=admin
-spring.datasource.password=Ati@2020
+spring.datasource.username=[username]
+spring.datasource.password=[password]
 
 #Hibernet JPA Configuration
 spring.jpa.hibernate.ddl-auto=update
