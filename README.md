@@ -85,7 +85,7 @@ security.oauth2.client.client-id=mobile
 security.oauth2.client.client-secret=pin
 ```
 
-### Enable oauth2 on sales service as a resource service
+#### Enable oauth2 on sales service as a resource service
 Now add the `@EnableResourceServer` and `@Configuration` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service. With this `@EnableResourceServer` annotation, this artifact will act like a resource service.
 
 
