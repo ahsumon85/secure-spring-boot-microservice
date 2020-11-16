@@ -63,34 +63,18 @@ Add the following dependencies:
 * **MySQL:** to use store data on database
 * **RestRepositories:** to expose JPA repositories as REST endpoints
 * **Hibernate validator:** to use runtime exception handling and return error messages
-* **oauth2:** to use api endpoint security and access auth permission
+* **oauth2:** to use api endpoint security and user access auth permission
 
-***Configure Application info, Database info and a few other configuration in properties file***
+***Configure Application info, Database info and a few other configuration in application.properties file***
+* `security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token` That is used to check user given token validaty from authorization service.
+* `security.oauth2.client.client-id=mobile` Here `moblie` client-id that was we are already input in auth database of `micro-auth-service`
+* `security.oauth2.client.client-secret=pin` Here `pin` client-password that was we are already input in auth database of `micro-auth-service`
+
 ```
 #Application Configuration
 server.port=8380
 spring.application.name=sales-server
 server.servlet.context-path=/sales-api
-
-#MySQL Database Configuration
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/sales_service?useSSL=false&createDatabaseIfNotExist=true
-spring.datasource.username=[username]
-spring.datasource.password=[password]
-
-#Hibernet JPA Configuration
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
-spring.jpa.generate-ddl=true
-spring.jpa.show-sql=true
-
-#eureka server url
-eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
-eureka.client.register-with-eureka=true
-eureka.client.fetch-registry=true
-eureka.instance.preferIpAddress=true
-eureka.instance.lease-expiration-duration-in-seconds=1
-eureka.instance.lease-renewal-interval-in-seconds=2
 
 #oauth2 configuration
 security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token
