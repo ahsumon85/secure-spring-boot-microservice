@@ -65,18 +65,18 @@ Add the following dependencies:
 * **Hibernate validator:** to use runtime exception handling and return error messages
 * **oauth2:** to use api endpoint security and user access auth permission
 
-***Configure Application info and Oauth2 Configuration to check token validaty for auth service***
+***Configure Application info and Oauth2 Configuration to check token validaty from auth service***
 
 * `security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token` That is used to check user given token validaty from authorization service.
 * `security.oauth2.client.client-id=mobile` Here `moblie` client-id that was we are already input in auth database of `micro-auth-service`
 * `security.oauth2.client.client-secret=pin` Here `pin` client-password that was we are already input in auth database of `micro-auth-service`
 
-Below we was used for checking user given token the following link `[http://localhost:9191/auth-api/oauth/check_token]` on the `http` means protocol, `localhost` for hostaddress `9191` are port of `micro-auth-service` we know auth service up on `9191` port `auth-api` are application context path of 'micro-auth-service' and `/oauth/check_token` is used to check token from auth service by spring security oauth2.
+Below we was used for checking user given token the following link `[http://localhost:9191/auth-api/oauth/check_token]` on the `http` means protocol, `localhost` for hostaddress, `9191` are port of `micro-auth-service`, we know auth service up on `9191` port `auth-api` are application context path of 'micro-auth-service' and `/oauth/check_token` is used to check token from auth service by spring security oauth2.
 
 ```
 #Application Configuration
 server.port=8380
-spring.application.name=sales-server
+spring.application.name=item-server
 server.servlet.context-path=/sales-api
 
 #oauth2 configuration
@@ -85,8 +85,8 @@ security.oauth2.client.client-id=mobile
 security.oauth2.client.client-secret=pin
 ```
 
-* ***Enable oauth2 on sales service as a resource service***
-Now add the `@EnableResourceServer` and `@Configuration` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service.
+### Enable oauth2 on sales service as a resource service
+Now add the `@EnableResourceServer` and `@Configuration` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service. With this `@EnableResourceServer` annotation, this artifact will act like a resource service.
 
 
 ```
