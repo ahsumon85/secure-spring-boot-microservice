@@ -101,9 +101,9 @@ security.oauth2.client.client-secret=pin
 * ***Enable oauth2 on sales service as a resource service***
 Now add the `@SpringBootApplication` and `@EnableResourceServer` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service.
 
-### Test HTTP GET Request on resource service
+### Test HTTP GET Request on resource service (sales-service)
 ```
-curl --request GET http://localhost:8180/sales-api/sales/find
+curl --location --request GET 'localhost:8180/sales-api/sales/find' --header 'Authorization: Bearer f11b7ced-3ebb-45ad-b47d-917c213c73de'
 ```
 here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `sales-api` are application context path of sales service and `/sales/find` is method URL.
 
@@ -192,7 +192,7 @@ security.oauth2.client.client-secret=pin
 ```
 
 ### Enable Eureka Registry Service on sales service
-Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
+Now add the `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service.
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
 
