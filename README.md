@@ -71,7 +71,7 @@ Add the following dependencies:
 * `security.oauth2.client.client-id=mobile` Here `moblie` client-id that was we are already input in auth database of `micro-auth-service`
 * `security.oauth2.client.client-secret=pin` Here `pin` client-password that was we are already input in auth database of `micro-auth-service`
 
-below we was used for checking user given token the following link `[http://localhost:9191/auth-api/oauth/check_token]` on the `http` means protocol, `localhost` for hostaddress `9191` are port of `micro-auth-service` we know auth service up on `9191` port `auth-api` are application context path of 'micro-auth-service' and `/oauth/check_token` is used to check token from auth service by spring security oauth2.
+Below we was used for checking user given token the following link `[http://localhost:9191/auth-api/oauth/check_token]` on the `http` means protocol, `localhost` for hostaddress `9191` are port of `micro-auth-service` we know auth service up on `9191` port `auth-api` are application context path of 'micro-auth-service' and `/oauth/check_token` is used to check token from auth service by spring security oauth2.
 
 ```
 #Application Configuration
@@ -86,21 +86,53 @@ security.oauth2.client.client-secret=pin
 ```
 
 * ***Enable oauth2 on sales service as a resource service***
-Now add the `@SpringBootApplication` and `@EnableResourceServer` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service.
+Now add the `@EnableResourceServer` and `@Configuration` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service.
+
+
+```
+@Configuration
+@EnableResourceServer
+public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+
+    private static final String RESOURCE_ID = "microservice";
+    private static final String SECURED_READ_SCOPE = "#oauth2.hasScope('READ')";
+    private static final String SECURED_WRITE_SCOPE = "#oauth2.hasScope('WRITE')";
+    private static final String SECURED_PATTERN = "/**";
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) {
+        resources.resourceId(RESOURCE_ID);
+    }
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .sessionManagement().disable()
+                .authorizeRequests()
+//                 .antMatchers("/sales/list").permitAll()
+                .and()
+                .requestMatchers()                
+                .antMatchers(SECURED_PATTERN).and().authorizeRequests()
+                .antMatchers(HttpMethod.POST, SECURED_PATTERN)
+                .access(SECURED_WRITE_SCOPE)
+                .anyRequest().access(SECURED_READ_SCOPE);
+    }
+}
+```
 
 ### Test HTTP GET Request on resource service (sales-service)
 ```
-curl --location --request GET 'localhost:8180/sales-api/sales/find' --header 'Authorization: Bearer f11b7ced-3ebb-45ad-b47d-917c213c73de'
+curl --request GET 'localhost:8180/sales-api/sales/find' --header 'Authorization: Bearer 62e2545c-d865-4206-9e23-f64a34309787'
 ```
 here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `sales-api` are application context path of sales service and `/sales/find` is method URL.
 
 ### For getting All API Information
-On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
+On this repository we will see `secure-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
-## How to run item service?
+## How to run sales service?
 
 ### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
+Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven shown below −
 For Maven, use the command as shown below −
 
 **Project import in sts4 IDE** 
