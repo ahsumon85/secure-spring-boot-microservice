@@ -2,7 +2,7 @@ package com.ahasan.item.common.utils;
 
 public enum Topic {
 
-	PRODUCT("Product", 101),
+	Item("Item", 101),
 	Sales("Sales", 102);
 	
 	private final String name;

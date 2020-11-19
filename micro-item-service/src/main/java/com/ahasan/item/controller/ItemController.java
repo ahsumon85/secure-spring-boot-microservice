@@ -19,30 +19,30 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.ahasan.item.common.messages.BaseResponse;
-import com.ahasan.item.dto.ProductDTO;
+import com.ahasan.item.dto.ItemDTO;
 import com.ahasan.item.dto.SalesDTO;
-import com.ahasan.item.service.ProductService;
+import com.ahasan.item.service.ItemService;
 
 @Validated
 @RestController
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/item")
+public class ItemController {
 
 	@Autowired
-	private ProductService productService;
+	private ItemService itemService;
 
 	@Autowired
 	private RestTemplate restTemplate;
 
 	@GetMapping(value = "/find")
-	public ResponseEntity<List<ProductDTO>> getAllProducts() {
-		List<ProductDTO> list = productService.findProductList();
-		return new ResponseEntity<List<ProductDTO>>(list, HttpStatus.OK);
+	public ResponseEntity<List<ItemDTO>> getAllItems() {
+		List<ItemDTO> list = itemService.findItemList();
+		return new ResponseEntity<List<ItemDTO>>(list, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/find/by-id")
-	public ResponseEntity<ProductDTO> getProductById(@RequestParam Long id) {
-		ProductDTO list = new ProductDTO();
+	public ResponseEntity<ItemDTO> getItemById(@RequestParam Long id) {
+		ItemDTO list = new ItemDTO();
 		SalesDTO salesDTO = new SalesDTO();
 		try {
 			String url = "http://sales-server/sales-api/sales/find/name/by-id?id=" + id;
@@ -51,20 +51,20 @@ public class ProductController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		list = productService.findByProductId(id);
+		list = itemService.findByItemId(id);
 		list.setSales(salesDTO.getPrice());
-		return new ResponseEntity<ProductDTO>(list, HttpStatus.OK);
+		return new ResponseEntity<ItemDTO>(list, HttpStatus.OK);
 	}
 
 	@PostMapping(value = { "/add", "/update" })
-	public ResponseEntity<BaseResponse> createOrUpdateProduct(@Valid @RequestBody ProductDTO productDTO) {
-		BaseResponse response = productService.createOrUpdateProduct(productDTO);
+	public ResponseEntity<BaseResponse> createOrUpdateItem(@Valid @RequestBody ItemDTO productDTO) {
+		BaseResponse response = itemService.createOrUpdateItem(productDTO);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
-	public ResponseEntity<BaseResponse> deleteProductById(@PathVariable("id") Long id) {
-		BaseResponse response = productService.deleteProduct(id);
+	public ResponseEntity<BaseResponse> deleteItemById(@PathVariable("id") Long id) {
+		BaseResponse response = itemService.deleteItem(id);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
