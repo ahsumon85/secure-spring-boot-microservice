@@ -5,11 +5,11 @@
 # Overview
 The architecture is composed by five services:
 
-   * `micro-eureka-server`: Service **Discovery Server** created with Eureka
-   * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
-   * `micro-auth-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **authorization service**
-   * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
-   * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
+   * [`micro-eureka-server`](https://github.com/habibsumoncse/secure-spring-boot-microservice#eureka-service): Service **Discovery Server** created with Eureka
+   * [`micro-api-getway`](https://github.com/habibsumoncse/secure-spring-boot-microservice#api-gateway-service): API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
+   * [`micro-auth-service`](https://github.com/habibsumoncse/secure-spring-boot-microservice#authorization-service): Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **authorization service**
+   * [`micro-item-service`](https://github.com/habibsumoncse/secure-spring-boot-microservice#item-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
+   * [`micro-sales-service`](https://github.com/habibsumoncse/secure-spring-boot-microservice#sales-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
 
 ### tools you will need
 * Maven 3.0+ is your build tool
