@@ -1,7 +1,6 @@
 ## Spring Boot, Spring Cloud Oauth2, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL.
 
-![Screenshot from 2020-11-21 09-36-07](https://user-images.githubusercontent.com/31319842/99866889-2564da80-2bdf-11eb-8c2b-abfa3fa48b50.png)
-
+![Screenshot from 2020-11-21 09-36-07](https://user-images.githubusercontent.com/31319842/99866973-ec793580-2bdf-11eb-99ff-88e0b89a04dc.png)
 
 # Overview
 The architecture is composed by five services:
