@@ -348,7 +348,7 @@ Now, add the Request Parameters as follows −
 ```
 
 ##
-# Item Service
+# Item Service (resource server)
 
 Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
@@ -383,7 +383,7 @@ security.oauth2.client.client-id=mobile
 security.oauth2.client.client-secret=pin
 ```
 
-#### Enable oauth2 on sales service as a resource service
+#### Enable oauth2 on sales service
 Now add the `@EnableResourceServer` and `@Configuration` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service. With this `@EnableResourceServer` annotation, this artifact will act like a resource service.
 
 
@@ -543,7 +543,7 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8280` port
 
-### Test HTTP GET Request on resource service (sales-service)
+***Test HTTP GET Request on resource service (sales-service)***
 ```
 curl --request GET 'localhost:8180/sales-api/sales/find' --header 'Authorization: Bearer 62e2545c-d865-4206-9e23-f64a34309787'
 ```
