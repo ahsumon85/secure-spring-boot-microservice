@@ -468,7 +468,7 @@ Add the following dependencies:
 * **Hibernate validator:** to use runtime exception handling and return error messages
 * **oauth2:** to use api endpoint security and user access auth permission
 
-***Configure Application info and Oauth2 Configuration to check token validaty from auth service***
+#### Configure Application info and Oauth2 Configuration to check token validaty from auth service
 
 * `security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token` That is used to check user given token validaty from authorization service.
 * `security.oauth2.client.client-id=mobile` Here `moblie` client-id that was we are already input in auth database of `micro-auth-service`
@@ -543,7 +543,7 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8280` port
 
-***Test HTTP GET Request on resource service -resource service***
+#### Test HTTP GET Request on resource service -resource service
 ```
 curl --request GET 'localhost:8180/sales-api/sales/find' --header 'Authorization: Bearer 62e2545c-d865-4206-9e23-f64a34309787'
 ```
@@ -590,6 +590,6 @@ After sucessfully run we can refresh Eureka Discovery-Service URL: `http://local
 
 ![Screenshot from 2020-11-15 11-21-33](https://user-images.githubusercontent.com/31319842/99894579-6af0d880-2caf-11eb-84aa-d41b16cfbd12.png)
 
-#### After we seen start sales, item, zuul instance then we can try `secure-microservice-architecture.postman_collection.json` imported API from postman with token
+After we seen start sales, item, zuul instance then we can try `secure-microservice-architecture.postman_collection.json` imported API from postman with token
 
 
