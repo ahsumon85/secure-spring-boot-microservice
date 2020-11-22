@@ -586,6 +586,10 @@ Now, run the JAR file by using the following command −
  
  `click right button on the project >Run As >Spring Boot App`
  
-After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` on eureka dashboard. the gateway instance will be run on `http://localhost:8180` port
+
+![Screenshot from 2020-11-15 11-21-33](https://user-images.githubusercontent.com/31319842/99894579-6af0d880-2caf-11eb-84aa-d41b16cfbd12.png)
+
+***After we seen start sales, item, zuul instance then we can try `secure-microservice-architecture.postman_collection.json` imported API from postman with token 
 
 
