@@ -348,7 +348,7 @@ Now, add the Request Parameters as follows −
 ```
 
 ##
-# Item Service -resource server
+# Item Service -resource service
 
 Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
