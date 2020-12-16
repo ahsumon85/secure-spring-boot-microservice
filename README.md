@@ -43,9 +43,9 @@ Now, run the JAR file by using the following command −
 Run on terminal `java –jar <JARFILE> `
 
  Run on sts IDE
- 
+
  `click right button on the project >Run As >Spring Boot App`
- 
+
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 ##
@@ -225,7 +225,6 @@ INSERT INTO ROLE_USER (ROLE_ID, USER_ID)
 
 Annotate the `Oauth2AuthorizationServerApplication.java` with `@EnableAuthorizationServer`. This enables the Spring to consider this service as authorization Server.
 ```
-@EnableAuthorizationServer
 @SpringBootApplication
 public class Oauth2AuthorizationServerApplication {
 
@@ -245,6 +244,7 @@ Let’s create a class `AuthServerConfig.java` with below details.
 * **ClientDetailsServiceConfigurer** configures the ClientDetailsService, e.g. declaring individual clients and their properties.
 
 ```
+@EnableAuthorizationServer
 @Configuration
 public class AuthorizationServerConfiguration implements AuthorizationServerConfigurer {
 
@@ -434,7 +434,7 @@ Now, run the JAR file by using the following command −
  `java –jar <JARFILE> `
  Run on sts IDE
  `click right button on the project >Run As >Spring Boot App`
- 
+
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `item-server` instance gate will be run on `http://localhost:8280` port
@@ -538,7 +538,7 @@ Now, run the JAR file by using the following command −
  `java –jar <JARFILE> `
  Run on sts IDE
  `click right button on the project >Run As >Spring Boot App`
- 
+
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8280` port
@@ -583,9 +583,9 @@ Now, run the JAR file by using the following command −
  `java –jar <JARFILE> `
 
  Run on sts IDE
- 
+
  `click right button on the project >Run As >Spring Boot App`
- 
+
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` on eureka dashboard. the gateway instance will be run on `http://localhost:8180` port
 
 ![Screenshot from 2020-11-15 11-21-33](https://user-images.githubusercontent.com/31319842/99894579-6af0d880-2caf-11eb-84aa-d41b16cfbd12.png)
