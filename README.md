@@ -221,21 +221,11 @@ INSERT INTO ROLE_USER (ROLE_ID, USER_ID)
     (2, 2), /* ahasan-editor */ ,
     (3, 3); /* user-operatorr */ ;
 ```
-### Enable OAuth2 mechanism
-
-Annotate the `Oauth2AuthorizationServerApplication.java` with `@EnableAuthorizationServer`. This enables the Spring to consider this service as authorization Server.
-```
-@SpringBootApplication
-public class Oauth2AuthorizationServerApplication {
-
-  public static void main(String[] args) {
-    SpringApplication.run(Oauth2AuthorizationServerApplication.class, args);
-  }
-}
-```
 ### Configure OAuth2 Server
 
-Let’s create a class `AuthServerConfig.java` with below details.
+Annotate the `Oauth2AuthorizationServerApplication.java` with `@EnableAuthorizationServer`. This enables the Spring to consider this service as authorization Server.
+
+Let’s create a class `AuthorizationServerConfiguration.java` with below details.
 
 * **JdbcTokenStore** implements token services that stores tokens in a database.
 * **BCryptPasswordEncoder** implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a “strength” (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 8 for client secret.
