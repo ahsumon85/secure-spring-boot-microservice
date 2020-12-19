@@ -60,7 +60,7 @@ To maintain security, the first necessary condition is to restrict direct micros
 ## Oauth2
 In this Spring security oauth2 tutorial, learn to build an authorization server to authenticate your identity to provide access_token, which you can use to request data from resource server.
 
-***Introduction to OAuth 2***
+**Introduction to OAuth 2**
 OAuth 2 is an authorization method to provide access to protected resources over the HTTP protocol. Primarily, oauth2 enables a third-party application to obtain limited access to an HTTP service –
 
 * either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service
@@ -168,7 +168,7 @@ create table if not exists role_user (
 * `oauth_client_details table` is used to store client details.
 * `oauth_access_token` and `oauth_refresh_token` is used internally by OAuth2 server to store the user tokens.
 
-***Create a client***
+**Create a client**
 
 Let’s insert a record in `oauth_client_details` table for a client named appclient with a password `appclient`.
 
@@ -273,7 +273,7 @@ public class AuthorizationServerConfiguration implements AuthorizationServerConf
     }
 }
 ```
-***Configure User Security Authentication***
+**Configure User Security Authentication**
 Let’s create a class `UserSecurityConfig.java` to handle user authentication.
 
 * **PasswordEncoder** implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a “strength” (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 4 for user’s password.
@@ -304,13 +304,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 ```
 
 ### Test Authorization Service
-***Get Access Token***
+**Get Access Token**
 
 Let’s get the access token for `admin` by passing his credentials as part of header along with authorization details of appclient by sending `client_id` `client_pass` `username` `userpsssword`
 
 Now hit the POST method URL via POSTMAN to get the OAUTH2 token.
 
-***http://localhost:8080/oauth/token***
+**`http://localhost:8080/oauth/token`**
 
 Now, add the Request Headers as follows −
 
@@ -353,7 +353,7 @@ Add the following dependencies:
 * **Hibernate validator:** to use runtime exception handling and return error messages
 * **oauth2:** to use api endpoint security and user access auth permission
 
-***Configure Application info and Oauth2 Configuration to check token validaty from auth service***
+**Configure Application info and Oauth2 Configuration to check token validaty from auth service**
 
 * `security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token` That is used to check user given token validaty from authorization service.
 * `security.oauth2.client.client-id=mobile` Here `moblie` client-id that was we are already input in auth database of `micro-auth-service`
@@ -429,7 +429,7 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `item-server` instance gate will be run on `http://localhost:8280` port
 
-***Test HTTP GET Request on item-service -resource service***
+**Test HTTP GET Request on item-service -resource service**
 ```
 curl --request GET 'localhost:8180/item-api/item/find' --header 'Authorization: Bearer 62e2545c-d865-4206-9e23-f64a34309787'
 ```
