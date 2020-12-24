@@ -11,7 +11,7 @@ The architecture is composed by five services:
    * [`micro-item-service`](https://github.com/habibsumoncse/secure-spring-boot-microservice#item-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * : Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
 
-`Follow the link to see Oauth2 in microservice architecture` [`advance-spring-boot-microservice`](https://github.com/ahsumon85/advance-spring-boot-microservice) 
+`Follow the link to see Hystrix, swagger and docker in microservice architecture` [`advance-spring-boot-microservice`](https://github.com/ahsumon85/advance-spring-boot-microservice) 
 
 ### tools you will need
 
