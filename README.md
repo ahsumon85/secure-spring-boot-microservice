@@ -1,4 +1,4 @@
-# Spring Cloud Oauth2 With [simple-spring-boot-microservice](https://github.com/ahsumon85/simple-spring-boot-microservice)
+# Spring Security Oauth2 With [simple-spring-boot-microservice](https://github.com/ahsumon85/simple-spring-boot-microservice)
 
 ![Screenshot from 2020-11-22 09-59-11](https://user-images.githubusercontent.com/31319842/99893389-be602800-2ca9-11eb-951f-639c42520d23.png)
 
@@ -25,7 +25,7 @@
 - First we need to run `eureka service`
 - Second we need to run `auth-service`
 - Third we need to run `item-servic` and `sales-service`
-- Finally we need to run `gateway-service`
+- Finally we need to run `gateway-service`, if we did run `gateway-service` before running `auth-service and iteam,sales-service` then we have to wait approximately 10 second 
 
 
 
@@ -35,32 +35,14 @@ Eureka Server is an application that holds the information about all client-serv
 
 ### How to run eureka service?
 
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
-For Maven, use the command as shown below −
-
-`mvn clean install`
-
-or
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
-
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
-Run on terminal `java –jar <JARFILE> `
-
- Run on sts IDE
+ **Run on sts IDE**
 
  `click right button on the project >Run As >Spring Boot App`
 
 Eureka Discovery-Service URL: `http://localhost:8761`
 
-##
-# Authorization Service
+
+## Authorization Service
 
 ![1](https://user-images.githubusercontent.com/31319842/99893591-9d003b80-2cab-11eb-9f06-1d5a785c775b.png)
 
@@ -68,7 +50,7 @@ Whenever we think of microservices and distributed applications, the first point
 
 To maintain security, the first necessary condition is to restrict direct microservice calls for outside callers. All calls should only go through the API Gateway. The API Gateway is mainly responsible for authentication and authorization of the API requests made by external callers. Also, this layer performs the routing of API requests that come from external clients to respective microservices. This allows the API Gateway to act as an entry point for all its respective microservices. So, we can say the API Gateway is mainly responsible for the security of microservices.
 
-## Oauth2
+### Oauth2
 In this Spring security oauth2 tutorial, learn to build an authorization server to authenticate your identity to provide access_token, which you can use to request data from resource server.
 
 **Introduction to OAuth 2**
@@ -111,7 +93,7 @@ This will also bring in the `spring-cloud-starter-security`dependency.
 </dependency>
 ```
 
-**Create tables for users, groups, group authorities and group members**
+### Create tables for users, groups, group authorities and group members
 
 For Spring OAuth2 mechanism to work, we need to create tables to hold users, groups, group authorities and group members. We can create these tables as part of application start up by providing the table definations in `schema.sql` file as shown below. This setup is good enough for POC code.
 `src/main/resources/schema.sql`
@@ -179,7 +161,7 @@ create table if not exists role_user (
 * `oauth_client_details table` is used to store client details.
 * `oauth_access_token` and `oauth_refresh_token` is used internally by OAuth2 server to store the user tokens.
 
-**Create a client**
+### Create a client
 
 Let’s insert a record in `oauth_client_details` table for a client named appclient with a password `appclient`.
 
@@ -216,7 +198,9 @@ VALUES ('mobile', '{bcrypt}$2a$10$gPhlXZfms0EpNHX0.HHptOhoFD1AoxSr/yUIdTqA8vtjeP
 
 
  insert into user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('1', 'admin','{bcrypt}$2a$12$xVEzhL3RTFP1WCYhS4cv5ecNZIf89EnOW4XQczWHNB/Zi4zQAnkuS', 'habibsumoncse2@gmail.com', '1', '1', '1', '1');
+ 
  insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('2', 'ahasan', '{bcrypt}$2a$12$DGs/1IptlFg0szj.3PttmeC8swHZs/pZ6YEKng4Cl1l2woMtkNhvi','habibsumoncse2@gmail.com', '1', '1', '1', '1');
+ 
  insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('3', 'user', '{bcrypt}$2a$12$udISUXbLy9ng5wuFsrCMPeQIYzaKtAEXNJqzeprSuaty86N4m6emW','habibsumoncse2@gmail.com', '1', '1', '1', '1');
  /*
  username - passowrds:
@@ -249,7 +233,6 @@ Let’s create a class `AuthorizationServerConfiguration.java` with below detail
 @Configuration
 public class AuthorizationServerConfiguration implements AuthorizationServerConfigurer {
 
-    
     @Autowired
     private PasswordEncoder passwordEncoder;
     
@@ -259,22 +242,19 @@ public class AuthorizationServerConfiguration implements AuthorizationServerConf
     @Autowired
     private AuthenticationManager authenticationManager;
 
-
     @Bean
     TokenStore jdbcTokenStore() {
         return new JdbcTokenStore(dataSource);
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception 		{
         security.checkTokenAccess("isAuthenticated()").tokenKeyAccess("permitAll()");
-
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.jdbc(dataSource).passwordEncoder(passwordEncoder);
-
     }
 
     @Override
@@ -284,14 +264,13 @@ public class AuthorizationServerConfiguration implements AuthorizationServerConf
     }
 }
 ```
-**Configure User Security Authentication**
+### Configure User Security Authentication
 Let’s create a class `UserSecurityConfig.java` to handle user authentication.
 
 * **PasswordEncoder** implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a “strength” (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 4 for user’s password.
 ```
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -348,8 +327,8 @@ Now, add the Request Parameters as follows −
 }
 ```
 
-##
-# Item Service -resource service
+
+## Item Service -resource service
 
 Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
@@ -364,7 +343,9 @@ Add the following dependencies:
 * **Hibernate validator:** to use runtime exception handling and return error messages
 * **oauth2:** to use api endpoint security and user access auth permission
 
-**Configure Application info and Oauth2 Configuration to check token validaty from auth service**
+
+
+### Configure Application info and Oauth2 Configuration to check token validaty from auth service
 
 * `security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token` That is used to check user given token validaty from authorization service.
 * `security.oauth2.client.client-id=mobile` Here `moblie` client-id that was we are already input in auth database of `micro-auth-service`
@@ -384,7 +365,7 @@ security.oauth2.client.client-id=mobile
 security.oauth2.client.client-secret=pin
 ```
 
-#### Enable oauth2 on sales service
+### Enable oauth2 on sales service
 Now add the `@EnableResourceServer` and `@Configuration` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service. With this `@EnableResourceServer` annotation, this artifact will act like a resource service.
 
 
@@ -418,29 +399,17 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     }
 }
 ```
-## How to run item service?
+### How to run item service?
 
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven shown below −
-For Maven, use the command as shown below −
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
-
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
- `java –jar <JARFILE> `
- Run on sts IDE
+ **Run on sts IDE**
  `click right button on the project >Run As >Spring Boot App`
 
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `item-server` instance gate will be run on `http://localhost:8280` port
 
-**Test HTTP GET Request on item-service -resource service**
+### Test HTTP GET Request on item-service -resource service
+
 ```
 curl --request GET 'localhost:8180/item-api/item/find' --header 'Authorization: Bearer 62e2545c-d865-4206-9e23-f64a34309787'
 ```
@@ -454,7 +423,7 @@ curl --request GET 'localhost:8180/item-api/item/find' --header 'Authorization: 
 On this repository we will see `secure-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
 
-##
+
 # Sales Service -resource service
 Now we will see `micro-sales-service` as a resource service. The `micro-sales-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `SalesApplicationRunner` bean.
 
@@ -469,7 +438,7 @@ Add the following dependencies:
 * **Hibernate validator:** to use runtime exception handling and return error messages
 * **oauth2:** to use api endpoint security and user access auth permission
 
-#### Configure Application info and Oauth2 Configuration to check token validaty from auth service
+### Configure Application info and Oauth2 Configuration to check token validaty from auth service
 
 * `security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token` That is used to check user given token validaty from authorization service.
 * `security.oauth2.client.client-id=mobile` Here `moblie` client-id that was we are already input in auth database of `micro-auth-service`
@@ -488,7 +457,7 @@ security.oauth2.client.client-id=mobile
 security.oauth2.client.client-secret=pin
 ```
 
-#### Enable oauth2 on sales service as a resource service
+### Enable oauth2 on sales service as a resource service
 Now add the `@EnableResourceServer` and `@Configuration` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a resource service. With this `@EnableResourceServer` annotation, this artifact will act like a resource service.
 
 
@@ -522,29 +491,16 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     }
 }
 ```
-## How to run sales service?
+### How to run sales service?
 
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven shown below −
-For Maven, use the command as shown below −
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
-
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
- `java –jar <JARFILE> `
- Run on sts IDE
+ **Run on sts IDE**
  `click right button on the project >Run As >Spring Boot App`
 
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8280` port
 
-#### Test HTTP GET Request on resource service -resource service
+### Test HTTP GET Request on resource service -resource service
 ```
 curl --request GET 'localhost:8180/sales-api/sales/find' --header 'Authorization: Bearer 62e2545c-d865-4206-9e23-f64a34309787'
 ```
@@ -558,7 +514,7 @@ curl --request GET 'localhost:8180/sales-api/sales/find' --header 'Authorization
 On this repository we will see `secure-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
 
-##
+
 # API Gateway Service
 
 Gateway Server is an application that transmit all API to desire services. every resource services information such us: `service-name, context-path` will beconfigured into the gateway service and every request will transmit configured services by gateway
@@ -566,24 +522,7 @@ Gateway Server is an application that transmit all API to desire services. every
 
 ## How to run API Gateway Service?
 
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
-For Maven, use the command as shown below −
-
-`mvn clean install`
-or
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
-
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
- `java –jar <JARFILE> `
-
- Run on sts IDE
+ **Run on sts IDE**
 
  `click right button on the project >Run As >Spring Boot App`
 
@@ -591,11 +530,11 @@ After sucessfully run we can refresh Eureka Discovery-Service URL: `http://local
 
 ![Screenshot from 2020-11-15 11-21-33](https://user-images.githubusercontent.com/31319842/99894579-6af0d880-2caf-11eb-84aa-d41b16cfbd12.png)
 
-After we seen start auth, sales, item, zuul instance then we can try `secure-microservice-architecture.postman_collection.json` imported API from postman with token
+After we will seen start `auth, sales, item, zuul` instance, then we can try by using `secure-microservice-architecture.postman_collection.json` imported API from postman with token
 
 
 
-# Hystrix, swagger and docker in Microservice
+# Hystrix, Swagger in [secure-microservice](https://github.com/ahsumon85/secure-spring-boot-microservice)
 
 **Below we will see how to configure Hystrix, swagger and docker in microservice**
 
