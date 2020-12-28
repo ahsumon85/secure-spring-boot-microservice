@@ -334,14 +334,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:9191/auth-api/oauth/token",
+					"raw": "http://localhost:8082/oauth/token",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9191",
+					"port": "8082",
 					"path": [
-						"auth-api",
 						"oauth",
 						"token"
 					]
