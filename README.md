@@ -1,9 +1,9 @@
-## Spring Boot, Spring Cloud Oauth2, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL.
+# Spring Cloud Oauth2 With [simple-spring-boot-microservice](https://github.com/ahsumon85/simple-spring-boot-microservice)
 
 ![Screenshot from 2020-11-22 09-59-11](https://user-images.githubusercontent.com/31319842/99893389-be602800-2ca9-11eb-951f-639c42520d23.png)
 
-# Overview
-The architecture is composed by five services:
+## Overview
+### The architecture is composed by five services:
 
    * [`micro-eureka-server`](https://github.com/habibsumoncse/secure-spring-boot-microservice#eureka-service): Service **Discovery Server** created with Eureka
    * [`micro-api-getway`](https://github.com/habibsumoncse/secure-spring-boot-microservice#api-gateway-service): API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
@@ -11,21 +11,29 @@ The architecture is composed by five services:
    * [`micro-item-service`](https://github.com/ahsumon85/secure-spring-boot-microservice#item-service--resource-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * [`micro-sales-service`](https://github.com/ahsumon85/secure-spring-boot-microservice#sales-service--resource-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
 
-`Follow the link to see Hystrix, swagger and docker in microservice architecture` [`advance-spring-boot-microservice`](https://github.com/ahsumon85/advance-spring-boot-microservice) 
+`Follow the link to see Hystrix Dashboard and swagger in microservice architecture` [`advance-spring-boot-microservice`](https://github.com/ahsumon85/advance-spring-boot-microservice) 
 
-### tools you will need
+### Tools you will need
 
 * Maven 3.0+ is your build tool
 * Your favorite IDE but we will recommend `STS-4-4.4.1 version`. We use STS.
 * MySQL server
 * JDK 1.8+
 
-##
-# Eureka Service
+### Microservice Running Process:
+
+- First we need to run `eureka service`
+- Second we need to run `auth-service`
+- Third we need to run `item-servic` and `sales-service`
+- Finally we need to run `gateway-service`
+
+
+
+## Eureka Service
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
 
-## How to run eureka service?
+### How to run eureka service?
 
 ### Build Project
 Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
