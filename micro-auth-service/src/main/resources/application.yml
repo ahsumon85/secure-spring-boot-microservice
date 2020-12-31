@@ -6,8 +6,8 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/authdb?createDatabaseIfNotExist=true
-    username: admin
-    password: Ati@2020
+    username: [username]
+    password: [password]
     driver-class-name: com.mysql.jdbc.Driver
     initialization-mode: always
   jpa:
